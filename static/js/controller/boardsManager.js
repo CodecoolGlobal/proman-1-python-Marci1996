@@ -2,9 +2,12 @@ import {dataHandler} from "../data/dataHandler.js";
 import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
 import {cardsManager} from "./cardsManager.js";
+import {createButtonAddBoard} from "../view/htmlFactory.js";
+
 
 export let boardsManager = {
     loadBoards: async function () {
+        addCreateBoardBtn();
         const boards = await dataHandler.getBoards();
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
@@ -22,4 +25,13 @@ export let boardsManager = {
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
     cardsManager.loadCards(boardId);
+}
+
+function addCreateBoardBtn(){
+    // get the value somehow
+    domManager.addChild("#root", createButtonAddBoard())
+    let button = document.getElementById("create-new-board");
+    button.addEventListener("click",  ()=>{
+         dataHandler.createNewBoard("lol")
+    })
 }

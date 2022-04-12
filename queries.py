@@ -50,7 +50,7 @@ def get_cards_for_board(board_id):
 
 
 def create_board(title):
-    create_board = data_manager.execute_select("""INSERT INTO boards (title)
+    data_manager.execute_select("""INSERT INTO boards (title)
     VALUES (%(title)s) RETURNING title;
     """, {"title": title})
 
