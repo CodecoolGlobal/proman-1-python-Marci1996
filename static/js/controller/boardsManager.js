@@ -26,10 +26,11 @@ export let boardsManager = {
                 showHideButtonHandler
             );
         }
+        editBoardTitle()
 
 
     },
-    editBoardTitle
+
 };
 
 function showHideButtonHandler(clickEvent) {
@@ -49,7 +50,7 @@ function editBoardTitle() {
         elements[i].setAttribute('data-bs-target', '#a' + idCount);
           idCount++;
                     const myModalID = "a" + idCount.toString();
-                    const container = document.createElement("div");
+                    const modalContainer = document.createElement("div");
                     const myModal = document.createElement("div");
                     myModal.classList.add("modal");
                     myModal.classList.add("fade");
@@ -94,12 +95,10 @@ function editBoardTitle() {
                     modalDialog.append(modalContent);
                     myModal.append(modalDialog);
                     containers[i].append(myModal);
-                    containers[i].append(container);
-                    const elem = document.createElement('p')
-                    p.textContent = "a"
-                    container[i].appendChild(elem)
-                    const main = document.getElementById('root');
-                    main.append(elem);
+                    containers[i].append(modalContainer);
+                    modalContainer.append(myModal)
+                    const ez = document.createElement("p");
+                    console.log(modalContainer)
     }
 }
 function addCreateBoardBtn(){
