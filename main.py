@@ -119,6 +119,12 @@ def create_new_board():
         return queries.create_board(board_title["title"])
 
 
+@app.route('/api/delete/<int:card_id>', methods=['DELETE'])
+@json_response
+def delete_card(card_id):
+    return queries.delete_card(card_id)
+
+
 def main():
     app.run(debug=True)
 
