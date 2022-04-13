@@ -78,7 +78,7 @@ def login_post():
 def logout():
     if is_logged_in():
         session.clear()
-        return redirect(url_for('main_page'))
+        return redirect(url_for('index'))
     else:
         return redirect(url_for('login_get'))
 
