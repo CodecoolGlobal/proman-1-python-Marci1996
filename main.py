@@ -114,9 +114,9 @@ def get_cards_for_board(board_id: int):
 @app.route("/api/createBoard", methods=["GET", "POST"])
 @json_response
 def create_new_board():
-    ez = request.get_json()
-    if ez:
-        return queries.create_board(ez["title"])
+    board_title = request.get_json()
+    if board_title:
+        return queries.create_board(board_title["title"])
 
 
 def main():
