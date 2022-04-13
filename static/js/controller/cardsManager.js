@@ -18,7 +18,6 @@ export let cardsManager = {
     }};
 
 async function deleteButtonHandler(e) {
-    let cardId = e.currentTarget.dataset.cardId
-    console.log(cardId)
+    let cardId = e.currentTarget.dataset.cardId;
     await dataHandler.deleteCard(cardId)
 }

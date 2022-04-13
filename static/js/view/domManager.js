@@ -10,7 +10,7 @@ export let domManager = {
     addEventListener(parentIdentifier, eventType, eventHandler) {
         const parent = document.querySelector(parentIdentifier);
         if (parent) {
-            parent.addEventListener(eventType, eventHandler);
+            parent.addEventListener(eventType, eventHandler, false);
         } else {
             console.error("could not find such html element: " + parentIdentifier);
         }

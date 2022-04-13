@@ -52,14 +52,16 @@ function renameBoard(){
         board.parentElement.insertBefore(renameField, board.parentElement.firstChild);
 
 
-        board.addEventListener("click", ()=>{
-            const idOfBoard = board.attributes[1].value.toString();
-            const idOfField = "input" + idOfBoard;
-            const targetField = document.getElementById(idOfField);
+        board.addEventListener("click", (target)=>{
+            if (target.target.classList.contains("board")){
+                console.log("hello")
+                const idOfBoard = board.attributes[1].value.toString();
+                const idOfField = "input" + idOfBoard;
+                const targetField = document.getElementById(idOfField);
 
-            board.style.display = "none";
-            targetField.style.display = "";
-            console.log(targetField)
+                board.style.display = "none";
+                targetField.style.display = "";
+            }
         })
 
     }
@@ -106,6 +108,6 @@ function addCreateBoardBtn(){
         button.style.display = '';
         inputField.style.display = 'none';
         saveNewBoard.style.display = 'none';
-    })
+    }, false)
 
 }
