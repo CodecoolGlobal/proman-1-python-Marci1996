@@ -1,7 +1,9 @@
 .idea
-.idea/
 .vscode
 __pycache__
 venv
 .env
 .env*
+/.env
+/.bak
+/.env.template.bak

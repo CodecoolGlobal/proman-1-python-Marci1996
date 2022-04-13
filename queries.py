@@ -80,3 +80,23 @@ def get_all_user_data(username):
         , {'username': username})
 
     return all_data
+
+
+def create_board(title):
+    data_manager.execute_select("""INSERT INTO boards (title)
+    VALUES (%(title)s) RETURNING title;
+    """, {"title": title})
+
+
+def rename_board(board_id, title):
+    board = data_manager.execute_select(
+        """
+        UPDATE boards
+        SET title = %(title)s
+        WHERE id = %(board_id)s
+        returning title
+        """
+        , {"title": title, "board_id": board_id})
+
+
+

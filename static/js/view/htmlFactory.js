@@ -1,11 +1,11 @@
 export const htmlTemplates = {
     board: 1,
-    card: 2
+    card: 2,
 }
 
 export const builderFunctions = {
     [htmlTemplates.board]: boardBuilder,
-    [htmlTemplates.card]: cardBuilder
+    [htmlTemplates.card]: cardBuilder,
 };
 
 export function htmlFactory(template) {
@@ -22,7 +22,7 @@ export function htmlFactory(template) {
 
 function boardBuilder(board) {
     return `<div class="board-container">
-                <div class="board" data-board-id=${board.id}>${board.title}</div>
+                <div class="board" data-board-id=${board.id}>${board.title} </div>
                 <button class="toggle-board-button" data-board-id="${board.id}">Show Cards</button>
             </div>`;
 }
@@ -30,4 +30,17 @@ function boardBuilder(board) {
 function cardBuilder(card) {
     return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
 }
+
+export function createButtonAddBoard(){
+    return `<div>
+    <button class="button" id="create-new-board">Create New Board</button>
+</div>`;}
+
+
+
+
+
+
+
+
 
