@@ -26,9 +26,7 @@ export let boardsManager = {
                 showHideButtonHandler
             );
         }
-        editBoardTitle()
-
-
+        renameBoard()
     },
 
 };
@@ -38,11 +36,47 @@ function showHideButtonHandler(clickEvent) {
     cardsManager.loadCards(boardId);
 }
 
+function renameBoard(){
+    const boards = document.getElementsByClassName("board");
+    const saves = document.getElementsByClassName("Save_btn")
+
+    for (let board of boards){
+        const idOfBoard = board.attributes[1].value.toString();
+        const idOfField = "input" + idOfBoard
+
+        const renameField = document.createElement("input");
+        renameField.id = idOfField;
+        renameField.placeholder = idOfBoard;
+        renameField.style.display = "none"
+
+        board.parentElement.insertBefore(renameField, board.parentElement.firstChild);
 
 
-function editBoardTitle() {
+        board.addEventListener("click", ()=>{
+            const idOfBoard = board.attributes[1].value.toString();
+            const idOfField = "input" + idOfBoard;
+            const targetField = document.getElementById(idOfField);
 
+            board.style.display = "none";
+            targetField.style.display = "";
+            console.log(targetField)
+        })
+
+    }
+    for (let save of saves){
+        save.addEventListener("click", ()=>{
+         //   const inputField = document.getElementsByClassName()
+            const input = document.getElementById('input' + save.attributes[1].value)
+            input.style.display = 'none';
+            input.parentElement.children[1].style.display = '';
+            const val = document.querySelector('#' + input.id.toString()).value;
+            const boardId = parseInt(input.parentElement.children[1].attributes[1].value);
+            dataHandler.renameBoard(boardId, val)
+        })
+    }
 }
+
+
 function addCreateBoardBtn(){
     // Adding the divs to the root div
     domManager.addChild("#root", createButtonAddBoard())

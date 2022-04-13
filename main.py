@@ -83,6 +83,7 @@ def logout():
         return redirect(url_for('login_get'))
 
 
+
 @app.route("/")
 def index():
     """
@@ -90,6 +91,13 @@ def index():
     """
     logged_in = is_logged_in()
     return render_template('index.html', logged_in=logged_in)
+
+
+@app.route("/api/rename_board/<boardid>", methods=['GET', 'POST'])
+@json_response
+def rename_boards(boardid):
+    rename = request.get_json()
+    return queries.rename_board(boardid, rename["title"])
 
 
 @app.route("/api/boards")
@@ -135,3 +143,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+

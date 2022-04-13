@@ -27,7 +27,12 @@ export let dataHandler = {
     createNewCard: async function (cardTitle, boardId, statusIdv) {
         // creates new card, saves it and calls the callback function with its data
     },
+    renameBoard: async function (boardId, new_title) {
+        const url = "/api/rename_board/" + boardId.toString();
+        return await apiPost(url, new_title);
+    }
 };
+
 
 async function apiGet(url) {
     let response = await fetch(url, {
@@ -64,3 +69,4 @@ async function apiPut(url) {
 
 async function apiPatch(url) {
 }
+

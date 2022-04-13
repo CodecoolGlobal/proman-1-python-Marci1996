@@ -89,7 +89,7 @@ def create_board(title):
 
 
 def rename_board(board_id, title):
-    board = data_manager.execute_select(
+    data_manager.execute_select(
         """
         UPDATE boards
         SET title = %(title)s
