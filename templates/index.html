@@ -15,6 +15,20 @@
         <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     </head>
     <body>
+        {% if logged_in %}
+        <div class="buttons" id="logout">
+            <a href="{{ url_for('logout') }}"><button id="logout-button">Logout</button></a>
+        </div>
         <div id="root"></div>
+        {% else %}
+        <div class="buttons" id="main">
+            <div class="buttons" id="login">
+                <a href="{{ url_for('login') }}"><button id="login-button">Login</button></a>
+            </div>
+            <div class="buttons" id="register">
+                <a href="{{ url_for('register') }}"><button id="register-button">Register</button></a>
+            </div>
+        </div>
+        {% endif %}
     </body>
 </html>
