@@ -10,7 +10,7 @@ export let cardsManager = {
             const content = cardBuilder(card);
             domManager.addChild(`.board[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(
-                `.card[data-card-id="${card.id}"]`,
+                `.delete-card-button[data-card-id="${card.id}"]`,
                 "click",
                 deleteButtonHandler
             );
