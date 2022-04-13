@@ -99,4 +99,11 @@ def rename_board(board_id, title):
         , {"title": title, "board_id": board_id})
 
 
-
+def delete_card(card_id):
+    card_to_delete = data_manager.execute_select(
+        """
+        DELETE FROM cards
+        WHERE id = %(card_id)s
+        RETURNING id
+        """
+        , {'card_id': card_id})
