@@ -24,7 +24,10 @@ function boardBuilder(board) {
     return `<div class="board-container" id=${board.id}>
                 <div class="board" data-board-id=${board.id}>${board.title} </div>
                 <button class="toggle-board-button" data-board-id="${board.id}">Show Cards</button>
-                <button class="Save_btn" data-board-id="${board.id}">Save</button>   
+                <button class="Save_btn" data-board-id="${board.id}">Save</button>
+                <button class="New-card-btn" id="newcardbtn${board.id}">New Card</button>
+                <input style="display: none" id="newcard${board.id}">
+                <button style="display: none" id="savecardbtn${board.id}">Save Card</button>
             </div>`;
 }
 

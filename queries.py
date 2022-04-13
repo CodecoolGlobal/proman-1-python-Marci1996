@@ -82,6 +82,14 @@ def get_all_user_data(username):
     return all_data
 
 
+def add_card(title, board_id):
+    card_order = 1
+    ###### TODO
+    data_manager.execute_select("""INSERT INTO cards (board_id, title, card_order) 
+    VALUES (%(board_id)s ,%(title)s,%(card_order)s ) RETURNING title;
+    """, {"title": title, "board_id": board_id, "card_order": card_order})
+
+
 def create_board(title):
     data_manager.execute_select("""INSERT INTO boards (title)
     VALUES (%(title)s) RETURNING title;

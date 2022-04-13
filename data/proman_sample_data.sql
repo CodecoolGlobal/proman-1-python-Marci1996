@@ -39,7 +39,7 @@ CREATE TABLE boards (
 CREATE TABLE cards (
     id          SERIAL PRIMARY KEY  NOT NULL,
     board_id    INTEGER             NOT NULL,
-    status_id   INTEGER             NOT NULL,
+    status_id   INTEGER             NOT NULL DEFAULT 1,
     title       VARCHAR (200)       NOT NULL,
     card_order  INTEGER             NOT NULL
 );

@@ -83,7 +83,6 @@ def logout():
         return redirect(url_for('login_get'))
 
 
-
 @app.route("/")
 def index():
     """
@@ -98,6 +97,13 @@ def index():
 def rename_boards(boardid):
     rename = request.get_json()
     return queries.rename_board(boardid, rename["title"])
+
+
+@app.route("/api/<board_id>/crateCard", methods=['GET', 'POST'])
+@json_response
+def add_new_card(board_id):
+    new_card = request.get_json()
+    return queries.add_card(new_card["title"], board_id)
 
 
 @app.route("/api/boards")

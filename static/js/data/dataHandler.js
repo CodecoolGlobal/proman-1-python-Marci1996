@@ -21,10 +21,12 @@ export let dataHandler = {
         return await apiDelete(`/api/delete/${cardId}`);
     },
     createNewBoard: async function (boardTitle) {
-        return await apiPost(`api/createBoard`, boardTitle)
+        return await apiPost(`/api/createBoard`, boardTitle)
         // creates new board, saves it and calls the callback function with its data
     },
-    createNewCard: async function (cardTitle, boardId, statusIdv) {
+    createNewCard: async function (cardTitle, boardId) {
+        console.log(cardTitle, boardId)
+        return await apiPost(`/api/${boardId}/crateCard`, cardTitle)
         // creates new card, saves it and calls the callback function with its data
     },
     renameBoard: async function (boardId, new_title) {
