@@ -47,3 +47,36 @@ def get_cards_for_board(board_id):
         , {"board_id": board_id})
 
     return matching_cards
+
+
+def get_all_username():
+    all_usernames_dict = data_manager.execute_select(
+        """
+        SELECT username FROM users;
+        """
+    )
+    all_username = []
+    for name in all_usernames_dict:
+        for value in name.values():
+            all_username.append(value)
+    return all_username
+
+
+def add_new_user(username, password):
+    data_manager.execute_update(
+        """
+        INSERT INTO users (username, password) 
+        VALUES (%(username)s, %(password)s)
+        """
+        , {'username': username, 'password': password})
+
+
+def get_all_user_data(username):
+    all_data = data_manager.execute_select(
+        """
+        SELECT * FROM users
+        WHERE username = %(username)s
+        """
+        , {'username': username})
+
+    return all_data
