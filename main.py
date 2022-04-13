@@ -89,7 +89,7 @@ def index():
     """
     This is a one-pager which shows all the boards and cards
     """
-    logged_in = True
+    logged_in = is_logged_in()
     return render_template('index.html', logged_in=logged_in)
 
 
